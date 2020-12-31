@@ -7,7 +7,7 @@ const Bloglist = props => (
       flex: `1`,
     }}
   >
-    <Link to={`/blog/${props.slug}`}>
+    <Link to={`/detail/${props.slug}`}>
       <img alt={props.data.thumbnail.alt} src={props.data.thumbnail.url} />
       <div>
         {props.data.heading.map(h => {
