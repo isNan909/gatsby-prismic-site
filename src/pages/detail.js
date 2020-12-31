@@ -7,12 +7,29 @@ import Blogdetail from "../components/blogdetail"
 
 class Blogdetailpage extends Component {
   render() {
-    const  id  = this.props.id
+    const { data } = this.props.data.blog
+    const heading = data.heading
+    const writtenBy = data.written_by
+    const writtenOn = data.written_on
+    const detailImage = data.detail_image
+    const description = data.description
     return (
       <Layout>
         <SEO title="Page two" />
-        <Link to={`/`}>Go back</Link>
-        <Blogdetail id={id} />
+        <div
+          style={{
+            margin: `30px 0px`,
+          }}
+        >
+          <Link to={`/`}>Go back</Link>
+          <Blogdetail
+            writtenOn={writtenOn}
+            writtenBy={writtenBy}
+            heading={heading}
+            detailImage={detailImage}
+            description={description}
+          />
+        </div>
       </Layout>
     )
   }
@@ -27,9 +44,18 @@ export const blogQuery = graphql`
         heading {
           text
         }
+        written_by {
+          text
+        }
+        written_on
+        description {
+          text
+        }
+        detail_image {
+          url
+          alt
+        }
       }
-      id
-      slugs
     }
   }
 `

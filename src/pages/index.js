@@ -14,7 +14,7 @@ const IndexPage = props => (
     <div
       style={{
         display: `flex`,
-        gap: `20px`
+        gap: `20px`,
       }}
     >
       {props.data.bloglist.edges.map(bloglist => (

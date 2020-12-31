@@ -20,11 +20,6 @@ exports.createPages = async ({ reporter, actions, graphql }) => {
           node {
             id
             slugs
-            data {
-              heading {
-                text
-              }
-            }
           }
         }
       }
@@ -34,14 +29,13 @@ exports.createPages = async ({ reporter, actions, graphql }) => {
   if (result.errors) {
     reporter.panic(result.errors)
   }
-
-  result.data.allPrismicArticles.edges.forEach(({ node }) => {
-    // Create a page for each blog post
+  const articles = result.data.allPrismicArticles.edges
+  articles.forEach(({ node }) => {
     createPage({
-      path: `/detail/${node.slugs}`,
+      path: `/detail/${node.slugs[0]}/`,
       component: blogTemplate,
       context: {
-        id: node.id,
+        slug: node.id,
       },
     })
   })
