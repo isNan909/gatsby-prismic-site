@@ -595,3 +595,8 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+/* extra layout css */
+a {
+  text-decoration: none;
+}
